@@ -1,8 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("🔥 Script loaded!");
+// ✅ Load Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-    // Initialize Firebase
-    const firebaseConfig = {
+// ✅ Firebase configuration (replace with your actual config)
+const firebaseConfig = {
   apiKey: "AIzaSyBmMWGITYVDOeeOG-ftmqj7EbqBQ16_oxc",
   authDomain: "firstn-f2ad1.firebaseapp.com",
   databaseURL: "https://firstn-f2ad1-default-rtdb.firebaseio.com",
@@ -14,21 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
 };
 
 
-    firebase.initializeApp(firebaseConfig);
-    console.log("✅ Firebase initialized!");
+// ✅ Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+console.log("✅ Firebase initialized!");
 
-    const db = firebase.database().ref("messages");
-
+// ✅ Handle form submission
+document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("subscribe-form").addEventListener("submit", function (event) {
-        event.preventDefault(); // ❌ Prevents form from refreshing the page
-
-        console.log("📩 Form submitted!");
+        event.preventDefault(); // ❌ Prevents page reload
 
         let email = document.getElementById("email").value.trim();
         let message = document.getElementById("message-text").value.trim();
 
         if (email && message) {
-            db.push({ email: email, message: message })
+            push(ref(db, "messages"), { email: email, message: message })
                 .then(() => {
                     console.log("✅ Data stored successfully!");
                     document.getElementById("message").innerText = "Message sent successfully!";
