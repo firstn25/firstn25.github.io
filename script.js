@@ -1,9 +1,11 @@
-// Firebase Setup
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("🔥 Script loaded!");
 
-const firebaseConfig = {
+    // Initialize Firebase
+    const firebaseConfig = {
   apiKey: "AIzaSyBmMWGITYVDOeeOG-ftmqj7EbqBQ16_oxc",
   authDomain: "firstn-f2ad1.firebaseapp.com",
-  databaseURL: "https://firstn-f2ad1-default-rtdb.firebaseio.com/",
+  databaseURL: "https://firstn-f2ad1-default-rtdb.firebaseio.com",
   projectId: "firstn-f2ad1",
   storageBucket: "firstn-f2ad1.firebasestorage.app",
   messagingSenderId: "1074944578649",
@@ -12,13 +14,15 @@ const firebaseConfig = {
 };
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    console.log("✅ Firebase initialized!");
+
     const db = firebase.database().ref("messages");
 
     document.getElementById("subscribe-form").addEventListener("submit", function (event) {
-        event.preventDefault();  // Prevents form from reloading the page
+        event.preventDefault(); // ❌ Prevents form from refreshing the page
+
+        console.log("📩 Form submitted!");
 
         let email = document.getElementById("email").value.trim();
         let message = document.getElementById("message-text").value.trim();
