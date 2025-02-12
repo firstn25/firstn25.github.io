@@ -12,28 +12,31 @@ const firebaseConfig = {
 };
 
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database().ref("messages");
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database().ref("messages");
 
-// Listen for form submission
-document.getElementById("subscribe-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+    document.getElementById("subscribe-form").addEventListener("submit", function (event) {
+        event.preventDefault();  // Prevents form from reloading the page
 
-    let email = document.getElementById("email").value.trim();
-    let message = document.getElementById("message-text").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let message = document.getElementById("message-text").value.trim();
 
-    if (email && message) {
-        db.push({ email: email, message: message }) // Cleaner way to push data
-            .then(() => {
-                document.getElementById("message").innerText = "Message sent successfully!";
-                document.getElementById("subscribe-form").reset();
-            })
-            .catch(error => {
-                console.error("Firebase Error:", error); // Log error for debugging
-                document.getElementById("message").innerText = "Error! Try again.";
-            });
-    } else {
-        document.getElementById("message").innerText = "Please enter all fields.";
-    }
+        if (email && message) {
+            db.push({ email: email, message: message })
+                .then(() => {
+                    console.log("✅ Data stored successfully!");
+                    document.getElementById("message").innerText = "Message sent successfully!";
+                    document.getElementById("subscribe-form").reset();
+                })
+                .catch(error => {
+                    console.error("❌ Firebase Error:", error);
+                    document.getElementById("message").innerText = "Error! Try again.";
+                });
+        } else {
+            console.warn("⚠️ Missing fields!");
+            document.getElementById("message").innerText = "Please enter all fields.";
+        }
+    });
 });
