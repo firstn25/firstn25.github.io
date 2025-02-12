@@ -3,13 +3,14 @@
 const firebaseConfig = {
   apiKey: "AIzaSyBmMWGITYVDOeeOG-ftmqj7EbqBQ16_oxc",
   authDomain: "firstn-f2ad1.firebaseapp.com",
-  databaseURL: "https://firstn-f2ad1-default-rtdb.firebaseio.com",
+  databaseURL: "https://firstn-f2ad1-default-rtdb.firebaseio.com/",
   projectId: "firstn-f2ad1",
   storageBucket: "firstn-f2ad1.firebasestorage.app",
   messagingSenderId: "1074944578649",
   appId: "1:1074944578649:web:a893634322ee091b850d48",
   measurementId: "G-HNE0H866M3"
 };
+
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
