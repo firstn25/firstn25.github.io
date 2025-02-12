@@ -11,22 +11,25 @@ const firebaseConfig = {
   measurementId: "G-HNE0H866M3"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database().ref("messages");
 
+// Listen for form submission
 document.getElementById("subscribe-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message-text").value;
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message-text").value.trim();
 
     if (email && message) {
-        db.push().set({ email: email, message: message })
+        db.push({ email: email, message: message }) // Cleaner way to push data
             .then(() => {
                 document.getElementById("message").innerText = "Message sent successfully!";
                 document.getElementById("subscribe-form").reset();
             })
             .catch(error => {
+                console.error("Firebase Error:", error); // Log error for debugging
                 document.getElementById("message").innerText = "Error! Try again.";
             });
     } else {
