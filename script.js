@@ -1,12 +1,14 @@
 // Firebase Setup
+
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBmMWGITYVDOeeOG-ftmqj7EbqBQ16_oxc",
+  authDomain: "firstn-f2ad1.firebaseapp.com",
+  databaseURL: "https://firstn-f2ad1-default-rtdb.firebaseio.com",
+  projectId: "firstn-f2ad1",
+  storageBucket: "firstn-f2ad1.firebasestorage.app",
+  messagingSenderId: "1074944578649",
+  appId: "1:1074944578649:web:a893634322ee091b850d48",
+  measurementId: "G-HNE0H866M3"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -14,17 +16,20 @@ const db = firebase.database().ref("messages");
 
 document.getElementById("subscribe-form").addEventListener("submit", function(event) {
     event.preventDefault();
-    
+
+    let email = document.getElementById("email").value;
     let message = document.getElementById("message-text").value;
-    
-    if (message) {
-        db.push().set({ message: message })
+
+    if (email && message) {
+        db.push().set({ email: email, message: message })
             .then(() => {
                 document.getElementById("message").innerText = "Message sent successfully!";
-                document.getElementById("message-text").value = "";
+                document.getElementById("subscribe-form").reset();
             })
             .catch(error => {
                 document.getElementById("message").innerText = "Error! Try again.";
             });
+    } else {
+        document.getElementById("message").innerText = "Please enter all fields.";
     }
 });
