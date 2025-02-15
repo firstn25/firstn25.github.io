@@ -1,8 +1,4 @@
-// ✅ Load Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-// ✅ Firebase configuration (replace with your actual config)
+// Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBmMWGITYVDOeeOG-ftmqj7EbqBQ16_oxc",
   authDomain: "firstn-f2ad1.firebaseapp.com",
@@ -14,34 +10,27 @@ const firebaseConfig = {
   measurementId: "G-HNE0H866M3"
 };
 
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database().ref("messages");
 
-// ✅ Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-console.log("✅ Firebase initialized!");
+// Form Submission
+document.getElementById("subscribe-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent page refresh
 
-// ✅ Handle form submission
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("subscribe-form").addEventListener("submit", function (event) {
-        event.preventDefault(); // ❌ Prevents page reload
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message-text").value.trim();
 
-        let email = document.getElementById("email").value.trim();
-        let message = document.getElementById("message-text").value.trim();
-
-        if (email && message) {
-            push(ref(db, "messages"), { email: email, message: message })
-                .then(() => {
-                    console.log("✅ Data stored successfully!");
-                    document.getElementById("message").innerText = "Message sent successfully!";
-                    document.getElementById("subscribe-form").reset();
-                })
-                .catch(error => {
-                    console.error("❌ Firebase Error:", error);
-                    document.getElementById("message").innerText = "Error! Try again.";
-                });
-        } else {
-            console.warn("⚠️ Missing fields!");
-            document.getElementById("message").innerText = "Please enter all fields.";
-        }
-    });
+    if (email && message) {
+        db.push({ email: email, message: message })
+            .then(() => {
+                document.getElementById("message").innerText = "Message sent successfully!";
+                document.getElementById("subscribe-form").reset();
+            })
+            .catch(error => {
+                document.getElementById("message").innerText = "Error! Try again.";
+                console.error("Firebase Error:", error);
+            });
+    } else {
+        document.getElementById("message").innerText = "Please enter all fields.";
+    }
 });
