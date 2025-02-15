@@ -10,10 +10,11 @@ const firebaseConfig = {
   measurementId: "G-HNE0H866M3"
 };
 
+// Initialize Firebase (v8 syntax)
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database().ref("messages");
 
-// Form Submission
+// Handle form submission
 document.getElementById("subscribe-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent page refresh
 
