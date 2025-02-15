@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TN State Board Class 10 Math Classes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- Firebase SDK -->
-   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
@@ -16,42 +15,43 @@
         <p>Online sessions held by Sarvesh - Statistics graduate and Data Scientist. Help your child ace the Class 10 Board Math Examination by attending just a 1-hour math session, 3 days a week.</p>
     </header>
     
-    <section class="syllabus">
-        <h2>Syllabus & Timeline</h2>
-        <p>Entire Class 10 Mathematics Syllabus will be covered from April 15, 2025, to Dec 24, 2025.</p>
-    </section>
-    
-    <section class="about">
-        <h2>About</h2>
-        <p>The tutor, Sarvesh, holds an MSc in Statistics from IIT Kanpur, with 2 years of experience as a Data Scientist. Most importantly, he has scored 100% in Mathematics in Class 10 and Class 12 TN Board.</p>
-    </section>
-    
-    <section class="price">
-        <h2>Course Price</h2>
-        <p><strong>₹14,999</strong></p>
-    </section>
-    
-    <section class="refund">
-        <h2>Refund Policy</h2>
-        <p>Entire amount will be refunded if the tutor cancels the course before the start or if performance is unsatisfactory.</p>
-    </section>
-    
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
-        <p>Phone: <a href="tel:+911234567890">+91 12345 67890</a></p>
-    </section>
-    
-    <section class="subscribe">
-        <h2>Stay in the Loop</h2>
-        <p>Enter your email and send a message to the tutor for more details.</p>
-        <form id="subscribe-form">
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <textarea id="message-text" placeholder="Type your message here..." required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <p id="message"></p>
-    </section>
+    <div class="container">
+        <section class="profile">
+            <img src="IMG_20240216_161308_366~2.jpg" alt="Sarvesh's Profile Picture">
+            <a href="211372_Sarvesh_MSc_Stats_1 (4).pdf" target="_blank">Download My Resume</a>
+        </section>
+        
+        <section class="syllabus">
+            <h2>Syllabus & Timeline</h2>
+            <p>Entire Class 10 Mathematics Syllabus will be covered from April 15, 2025, to Dec 24, 2025.</p>
+        </section>
+        
+        <section class="about">
+            <h2>About</h2>
+            <p>The tutor, Sarvesh, holds an MSc in Statistics from IIT Kanpur, with 2 years of experience as a Data Scientist. Most importantly, he has scored 100% in Mathematics in Class 10 and Class 12 TN Board.</p>
+        </section>
+        
+        <section class="price">
+            <h2>Course Price</h2>
+            <p><strong>₹14,999</strong></p>
+        </section>
+        
+        <section class="refund">
+            <h2>Refund Policy</h2>
+            <p>Entire amount will be refunded if the tutor cancels the course before the start or if performance is unsatisfactory.</p>
+        </section>
+        
+        <section class="subscribe">
+            <h2>Stay in the Loop</h2>
+            <p>Send a message to the tutor to receive more details about the course.</p>
+            <form id="subscribe-form">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <textarea id="message-text" placeholder="Type your message here..." required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <p id="message"></p>
+        </section>
+    </div>
     
     <footer>
         <a href="https://example.com/enroll" target="_blank"><button id="enroll">Enroll Now</button></a>
