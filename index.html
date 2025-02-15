@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-
-<!-- Your Script -->
-<script src="script.js"></script>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TN State Board Class 10 Math Classes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 </head>
 <body>
     <header>
@@ -47,13 +44,12 @@
     
     <section class="subscribe">
         <h2>Stay in the Loop</h2>
-        <p>Enter your email and message to receive more details about the course.</p>
+        <p>Enter your email and send a message to the tutor for more details.</p>
         <form id="subscribe-form">
-    <input type="email" id="email" placeholder="Enter your email" required>
-    <textarea id="message-text" placeholder="Type your message here..." required></textarea>
-    <button type="submit">Send Message</button>
-</form>
-<p id="message"></p>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <textarea id="message-text" placeholder="Type your message here..." required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
         <p id="message"></p>
     </section>
     
